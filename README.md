@@ -191,6 +191,10 @@ PGlite allows a single writer. Stop the dev server before running the seed scrip
 If a process is killed hard and leaves the data directory unusable, delete `.data/` and run
 `npm run setup` again.
 
+Next.js allows only one development server per directory, so `npm run dev` and
+`npm run test:e2e` cannot run at the same time. Stop the development server before
+running the end-to-end suite.
+
 ---
 
 ## Environment variables
