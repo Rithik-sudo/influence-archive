@@ -6,6 +6,11 @@ This document is the handover record for the project. It is written to be read b
 who was not present for the build: an editor, a maintainer, or a reviewer checking the
 work against the brief.
 
+**This is a passion project, vibe coded, and entirely AI-built.** The code, the schema, the
+design, the editorial text, the essays and the tests were all written by artificial
+intelligence; a person set the intention and pressed the buttons. §12 sets out what that
+means for the writing and the sourcing.
+
 For *how to run it*, see [`README.md`](./README.md).
 For *how the content was sourced*, see [`docs/data-sources.md`](./docs/data-sources.md).
 For *the rules the editorial desk works to*, see the editorial standards page on the
@@ -603,26 +608,42 @@ palette cannot silently regress.
 
 ## 12. Known limitations
 
-1. **The corpus is fifteen profiles.** The archive's own "Published profiles" count is
+1. **The whole project is AI-built, and the content is machine-written.** This is a
+   passion project, vibe coded: the code, the schema, the design system, the seed
+   pipeline, the test suite, all 15 profiles and all 6 essays were written by artificial
+   intelligence. A person set the intention and pressed the buttons. The practical
+   consequences are the ones that matter:
+   - The editorial text has not been through the line-by-line human editing a
+     traditional publication would insist on. Some of it will be too neat; some of it
+     will be wrong in ways that are hard to spot precisely because the prose is fluent.
+   - The sources are real and machine-checked, but a link that resolves is not the same
+     as a claim confirmed by someone who knows the subject. 45 of the 63 links resolved,
+     18 were refused by bot protection and are recorded as unverified, and none are
+     broken.
+   - The honest handling of uncertain dates is a design decision, not a substitute for a
+     historian.
+
+   The site's own editorial standards page says as much to readers.
+2. **The corpus is fifteen profiles.** The archive's own "Published profiles" count is
    honest about it, and the missing names are listed in §10.1.
-2. **Fuzzy search is a sequential scan** above a few thousand profiles. See §10.2.
-3. **Pages are rendered on request**, so a CDN is the caching layer rather than the
+3. **Fuzzy search is a sequential scan** above a few thousand profiles. See §10.2.
+4. **Pages are rendered on request**, so a CDN is the caching layer rather than the
    framework. See §10.3.
-4. **The `search` page is not indexed**, and the sitemap lists only canonical URLs, so
+5. **The `search` page is not indexed**, and the sitemap lists only canonical URLs, so
    filtered views do not become search-engine duplicates.
-5. **Accessibility was verified by construction, not by assistive technology.** The markup
+6. **Accessibility was verified by construction, not by assistive technology.** The markup
    is semantic, headings are in order, forms have real labels, the focus ring is visible,
    motion respects `prefers-reduced-motion`, and the colour pairs are asserted — but no
    screen reader was available, and that remains unverified.
-6. **The media library writes to the filesystem.** A platform with a read-only filesystem
+7. **The media library writes to the filesystem.** A platform with a read-only filesystem
    needs the storage adapter replaced with object storage; the `media_assets` table
    already holds the attribution for every file.
-7. **`npm audit` reports nine advisories, all in the development toolchain** — the ESLint
+8. **`npm audit` reports nine advisories, all in the development toolchain** — the ESLint
    plugin chain and the `esbuild` loader bundled with `drizzle-kit`. No runtime
    dependency is affected. `npm audit fix --force` resolves them by downgrading
    `drizzle-kit` below the current schema API, which is a worse trade. The advisories are
    recorded here rather than silenced.
-8. **The development server and the end-to-end suite cannot run together**, because Next
+9. **The development server and the end-to-end suite cannot run together**, because Next
    allows one development server per directory.
 
 ---
@@ -679,7 +700,10 @@ table a `tsvector` column maintained by a trigger — see `0001_security.sql`.
 
 **Needs a human**
 
-- [ ] Read the fifteen profiles and correct them where the writing is wrong
+- [ ] Read the fifteen profiles and correct them where the writing is wrong — this is the
+      single most valuable thing anyone could do with this repository
+- [ ] Decide how much of the AI-built nature of the project to state on the site itself,
+      rather than only in the repository
 - [ ] Decide whether to commission the remaining five profiles
 - [ ] Run the accessibility pass with assistive technology
 - [ ] Set up the deployment target and apply the migrations there

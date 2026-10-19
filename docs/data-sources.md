@@ -3,6 +3,14 @@
 This note records the provenance of the initial library, so a reader or a
 reviewer can check the work rather than take it on trust.
 
+> **The whole project is AI-built.** The code, the schema, the design, this
+> document, the seed pipeline, the test suite and every word of the editorial
+> copy were written by artificial intelligence. A person set the intention and
+> pressed the buttons. What follows describes the machinery that produced the
+> facts and the citations; the interpretation was machine-drafted, and has not
+> been through the line-by-line human editing a traditional publication would
+> insist on.
+
 ## Structured facts
 
 Dates, occupations, places and portraits are taken from **Wikipedia's infobox**, fetched

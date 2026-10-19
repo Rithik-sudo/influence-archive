@@ -11,6 +11,34 @@ forward — and **the sources for each of those claims, shown to the reader**.
 
 ---
 
+> ### This is a passion project, and it is entirely AI-built
+>
+> **The Influence Archive is a passion project, vibe coded, and every part of it was written
+> by artificial intelligence** — the code, the database schema, the design system, the editorial
+> text, the essays, the seed pipeline and the test suite. A person set the intention and
+> pressed the buttons; the machine did the making.
+>
+> Some of that has to be said plainly rather than buried:
+>
+> - **The writing is machine-drafted.** All 15 profiles and all 6 essays were written by an
+>   AI. They have not been through the line-by-line human editing a traditional publication
+>   would insist on. Some will be too neat; some will be wrong in ways that are hard to spot
+>   precisely because the prose is fluent.
+> - **The sources are real but not the same as verified.** Every citation was machine-checked
+>   by fetching it — 45 resolved, 18 were refused by bot protection and are recorded as
+>   unverified, none are broken. But a link that resolves is not a claim that a human
+>   knowledgeable about the subject has confirmed.
+> - **The dates are handled honestly** — every date carries its precision, so a person recorded
+>   as "c. 350" is shown that way — but that is a design decision, not a substitute for a
+>   historian.
+>
+> Read it, then take it apart. The
+> [editorial standards](<src/app/(public)/editorial-standards/page.tsx>) describe the rules it
+> tries to hold itself to, and the [delivery record](./DELIVERY.md) accounts for every decision,
+> every bug the tests caught, and everything that remains open.
+
+---
+
 > **Looking for the handover record?** [`DELIVERY.md`](./DELIVERY.md) accounts for everything
 > that was built, every decision that shaped it, every bug the tests caught, and every
 > item that remains open.
