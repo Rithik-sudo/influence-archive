@@ -11,6 +11,10 @@ forward — and **the sources for each of those claims, shown to the reader**.
 
 ---
 
+> **Looking for the handover record?** [`DELIVERY.md`](./DELIVERY.md) accounts for everything
+> that was built, every decision that shaped it, every bug the tests caught, and every
+> item that remains open.
+
 ## Contents
 
 - [What is here](#what-is-here)
