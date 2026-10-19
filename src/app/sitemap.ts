@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+import { headers } from 'next/headers';
 import { listPeople } from '@/server/queries/people';
 import { listCategories } from '@/server/queries/categories';
 import { listCollections } from '@/server/queries/collections';
@@ -6,7 +7,25 @@ import { listArticles } from '@/server/queries/articles';
 
 export const dynamic = 'force-dynamic';
 
-const BASE = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+async function resolveBase(): Promise<string> {
+  const configured = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  if (configured) return configured.replace(/\/$/, '');
+
+  try {
+    const headerList = await headers();
+    const host = headerList.get('x-forwarded-host') ?? headerList.get('host');
+    if (host) {
+      const proto =
+        headerList.get('x-forwarded-proto') ??
+        (host.startsWith('localhost') || host.startsWith('127.') ? 'http' : 'https');
+      return `${proto}://${host}`;
+    }
+  } catch {
+    // No request context: fall through.
+  }
+
+  return 'http://localhost:3000';
+}
 
 /**
  * Only published, canonical URLs are listed. Filtered views of the directory
@@ -14,6 +33,8 @@ const BASE = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
  * not become a separate index entry.
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const BASE = await resolveBase();
+
   const [people, categories, collections, articles] = await Promise.all([
     listPeople({ perPage: 60, page: 1, sort: 'alpha' }),
     listCategories(),
