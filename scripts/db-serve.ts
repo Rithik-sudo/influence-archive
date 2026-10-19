@@ -28,7 +28,10 @@ async function main() {
     db,
     port: PORT,
     host: HOST,
-    maxConnections: 12,
+    // The application opens a pool of ten connections, and a test run opens
+    // another pool alongside it. The limit has to sit above the total, or the
+    // server resets the connections it cannot serve.
+    maxConnections: 40,
   });
 
   await server.start();

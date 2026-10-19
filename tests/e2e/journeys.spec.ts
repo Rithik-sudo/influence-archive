@@ -45,7 +45,14 @@ async function cleanup() {
 }
 
 test.afterAll(async () => {
-  await cleanup().catch(() => undefined);
+  try {
+    await cleanup();
+  } catch (error) {
+    // A failed cleanup must be visible: the records are harmless, but a
+    // silent failure would hide a real problem with the data layer.
+    console.error('Test cleanup failed:', error);
+    throw error;
+  }
 });
 
 async function signIn(page: Page) {
