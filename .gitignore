@@ -32,6 +32,10 @@ yarn-error.log*
 .vercel
 *.tsbuildinfo
 
+# Agent tooling installed in the workspace, not part of the application
+/.agents/
+/skills-lock.json
+
 # Environment files
 .env
 .env.local
