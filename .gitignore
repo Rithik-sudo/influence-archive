@@ -1,27 +1,29 @@
-# dependencies
-node_modules/
+# Dependencies
+/node_modules/
 .pnp
 .pnp.js
 
-# next.js
-.next/
-out/
+# Next.js
+/.next/
+/out/
 next-env.d.ts
 
-# production
-build/
-dist/
+# Production
+/build/
+/dist/
 
-# local database (PGlite) — regenerate with `npm run setup`
-.data/
+# Local database (PGlite) — regenerate with `npm run setup`
+/.data/
 
-# downloaded media — regenerate with `npm run db:seed`
-media/
+# Downloaded media — regenerate with `npm run db:seed`
+# Anchored to the repository root: a bare `media/` would also exclude the
+# `src/app/media/` route and the `src/app/admin/media/` page.
+/media/
 
-# seed API cache
-.cache/
+# Seed API cache
+/.cache/
 
-# misc
+# Miscellaneous
 .DS_Store
 *.pem
 npm-debug.log*
@@ -30,13 +32,13 @@ yarn-error.log*
 .vercel
 *.tsbuildinfo
 
-# env files
+# Environment files
 .env
 .env.local
 .env*.local
 
-# playwright
-test-results/
-playwright-report/
-blob-report/
-.playwright/
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/.playwright/

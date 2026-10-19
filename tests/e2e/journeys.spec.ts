@@ -20,8 +20,23 @@ import { withPrivilegedDb } from '@/server/db/tx';
  * 12. An unpublished profile is not exposed through public routes or search.
  */
 
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL ?? 'editor@influence-archive.test';
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD ?? 'Archive-Editor-2026!';
+/**
+ * The credentials the suite signs in with. They are read from the
+ * environment rather than hard-coded, so no password for any account ever
+ * ends up in the repository.
+ *
+ *   ADMIN_EMAIL=you@example.com ADMIN_PASSWORD='…' npm run test:e2e
+ */
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+
+if (!ADMIN_EMAIL || !ADMIN_PASSWORD) {
+  throw new Error(
+    'The end-to-end suite needs an editor account.\n' +
+      'Set ADMIN_EMAIL and ADMIN_PASSWORD, and provision the account with:\n' +
+      '  npm run db:admin',
+  );
+}
 
 /**
  * A unique suffix per run, so the suite can be run repeatedly against the
